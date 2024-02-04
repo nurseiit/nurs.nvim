@@ -25,19 +25,15 @@ vim.keymap.set("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
 vim.keymap.set("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
 vim.keymap.set("n", "<C-q>", "<cmd>qa!<cr>", { desc = "Force quit" })
 
--- Comments
-vim.keymap.set("n", "<leader>/", function()
-  require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
-end, {
-  desc = "Toggle comment line",
-})
-vim.keymap.set("v", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", {
-  desc = "Toggle comment for selection",
-})
+vim.o.showtabline = 2
 
--- Buffers
-vim.keymap.set("n", "<leader>c", "<cmd>BufferClose<cr>", { desc = "Close current buffer" })
-vim.keymap.set("n", "[b", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]b", "<cmd>BufferNext<cr>", { desc = "Next buffer" })
-vim.keymap.set("n", "<b", "<cmd>BufferMovePrevious<cr>", { desc = "Move current buffer to previous" })
-vim.keymap.set("n", ">b", "<cmd>BufferMoveNext<cr>", { desc = "Move current buffer to next" })
+-- Tabs
+vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true, desc = "New tab" })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, desc = "Close tab" })
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true, desc = "Close all except this" })
+vim.api.nvim_set_keymap("n", "]t", ":tabn<CR>", { noremap = true, desc = "Next tab" })
+vim.api.nvim_set_keymap("n", "[t", ":tabp<CR>", { noremap = true, desc = "Prev tab" })
+-- move current tab to previous position
+vim.api.nvim_set_keymap("n", "<t", ":-tabmove<CR>", { noremap = true, desc = "Move tab to prev" })
+-- move current tab to next position
+vim.api.nvim_set_keymap("n", ">t", ":+tabmove<CR>", { noremap = true, desc = "Move tab to next" })

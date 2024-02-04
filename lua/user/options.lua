@@ -4,7 +4,9 @@
 vim.o.hlsearch = true
 
 -- Make line numbers default
+vim.o.cursorline = true
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
