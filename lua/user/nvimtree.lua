@@ -7,7 +7,16 @@ function M.config()
   local wk = require "which-key"
   wk.register {
     ["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Explorer" },
-    ["<leader>o"] = { "<cmd>NvimTreeFocus<CR>", "Toggle Explorer Focus" },
+    ["<leader>o"] = {
+      function()
+        if vim.bo.filetype == "NvimTree" then
+          vim.cmd.wincmd "p"
+        else
+          vim.cmd [[NvimTreeFocus]]
+        end
+      end,
+      "Toggle Explorer Focus",
+    },
   }
 
   local icons = require "user.icons"
