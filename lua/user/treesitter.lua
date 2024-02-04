@@ -39,7 +39,7 @@ function M.config()
       modules = {},
 
       highlight = { enable = true },
-      indent = { enable = true },
+      indent = { disable = true },
       incremental_selection = {
         enable = true,
         keymaps = {

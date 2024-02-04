@@ -18,7 +18,7 @@ function M.config()
         "dashboard",
         "lazy",
         "neogitstatus",
-        "NvimTree",
+        "neo-tree",
         "Trouble",
         "text",
       },
@@ -27,9 +27,9 @@ function M.config()
       char = icons.ui.LineMiddle,
     },
     whitespace = {
-      remove_blankline_trail = true,
+      remove_blankline_trail = false,
     },
-    scope = { enabled = false },
+    scope = { enabled = true },
   }
 end
 
