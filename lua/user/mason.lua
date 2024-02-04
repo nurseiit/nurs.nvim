@@ -13,6 +13,7 @@ function M.config()
     "tsserver",
     "bashls",
     "jsonls",
+    "rust_analyzer",
   }
 
   require("mason").setup {

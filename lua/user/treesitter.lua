@@ -22,6 +22,7 @@ function M.config()
         "rust",
         "tsx",
         "javascript",
+        "jsdoc",
         "typescript",
         "vimdoc",
         "vim",
