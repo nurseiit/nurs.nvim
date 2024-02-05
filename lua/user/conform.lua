@@ -16,7 +16,7 @@ function M.config()
       markdown = { { "prettierd", "prettier" } },
       html = { "htmlbeautifier" },
       rust = { "rustfmt" },
-      yaml = { "yamlfix" },
+      yaml = { "yamlfmt" },
       toml = { "taplo" },
       css = { { "prettierd", "prettier" } },
       scss = { { "prettierd", "prettier" } },
