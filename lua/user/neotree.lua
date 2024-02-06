@@ -1,7 +1,9 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
-  -- cmd = "Neotree",
+  init = function()
+    vim.g.neo_tree_remove_legacy_commands = true
+  end,
 }
 
 function M.config()
@@ -21,8 +23,6 @@ function M.config()
   }
 
   local icons = require "user.icons"
-
-  vim.g.neo_tree_remove_legacy_commands = true
 
   require("neo-tree").setup {
     auto_clean_after_session_restore = true,

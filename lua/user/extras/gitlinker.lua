@@ -14,6 +14,14 @@ function M.config()
   require("gitlinker").setup {
     message = false,
     console_log = false,
+    router = {
+      browse = {
+        ["^github.palantir.build"] = require("gitlinker.routers").github_browse,
+      },
+      blame = {
+        ["^github.palantir.build"] = require("gitlinker.routers").github_blame,
+      },
+    },
   }
 end
 
