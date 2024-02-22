@@ -11,7 +11,7 @@ function M.config()
       typescript = { { "prettierd", "prettier" } },
       javascriptreact = { { "prettierd", "prettier" } },
       typescriptreact = { { "prettierd", "prettier" } },
-      json = { { "prettierd", "prettier" } },
+      -- json = { { "prettierd", "prettier" } },
       graphql = { { "prettierd", "prettier" } },
       markdown = { { "prettierd", "prettier" } },
       html = { "htmlbeautifier" },
@@ -24,7 +24,7 @@ function M.config()
     format_on_save = {
       -- These options will be passed to conform.format()
       timeout_ms = 500,
-      lsp_fallback = true,
+      lsp_fallback = false,
     },
   }
 end
