@@ -1,0 +1,40 @@
+{
+    "import react": {
+      "prefix": "impreact",
+      "body": [
+        "import * as React from 'react';"
+      ],
+      "description": "import all of react"
+    },
+    "initialize react file": {
+      "prefix": "initreact",
+      "body": [
+	"import * as React from 'react';",
+	"",
+	"interface I${TM_FILENAME_BASE}Props {}",
+	"",
+	"export const ${TM_FILENAME_BASE}: React.FC<I${TM_FILENAME_BASE}Props> = React.memo(function _${TM_FILENAME_BASE}({}) {",
+	"  return (",
+	"    <div>",
+	"      ${1}",
+	"    </div>",
+	"  );",
+	"});\n"
+      ],
+      "description": "initialize a react file with memo and props interface"
+    },
+    "import scss module": {
+      "prefix": "impcss",
+      "body": [
+	"import * as css from './${TM_FILENAME_BASE}.module.scss';"
+      ],
+      "description": "import scss module based on filename"
+    },
+    "import i18n yml": {
+      "prefix": "impi18n",
+      "body": [
+        "import * as i18n from './${TM_FILENAME_BASE}.i18n.yml';"
+      ],
+      "description": "import i18n yml based on filename"
+    }
+}

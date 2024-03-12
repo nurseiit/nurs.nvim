@@ -4,6 +4,10 @@
       {
         "language": "yaml",
         "path": "./yaml.json"
+      },
+      {
+        "language": ["typescript", "typescriptreact"],
+        "path": "./typescript.json"
       }
     ]
   }
