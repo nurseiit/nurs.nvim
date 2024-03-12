@@ -7,19 +7,19 @@ function M.config()
     formatters_by_ft = {
       lua = { "stylua" },
       -- Use a sub-list to run only the first available formatter
-      javascript = { { "prettierd", "prettier" } },
-      typescript = { { "prettierd", "prettier" } },
-      javascriptreact = { { "prettierd", "prettier" } },
-      typescriptreact = { { "prettierd", "prettier" } },
+      javascript = { { "prettier", "prettierd" } },
+      typescript = { { "prettier", "prettierd" } },
+      javascriptreact = { { "prettier", "prettierd" } },
+      typescriptreact = { { "prettier", "prettierd" } },
       -- json = { { "prettierd", "prettier" } },
-      graphql = { { "prettierd", "prettier" } },
-      markdown = { { "prettierd", "prettier" } },
+      graphql = { { "prettier", "prettierd" } },
+      markdown = { { "prettier", "prettierd" } },
       html = { "htmlbeautifier" },
       rust = { "rustfmt" },
       yaml = { "yamlfmt" },
       toml = { "taplo" },
-      css = { { "prettierd", "prettier" } },
-      scss = { { "prettierd", "prettier" } },
+      css = { { "prettier", "prettierd" } },
+      scss = { { "prettier", "prettierd" } },
     },
     format_on_save = {
       -- These options will be passed to conform.format()

@@ -1,0 +1,17 @@
+{
+    "Insert new feature flag": {
+      "prefix": "nff",
+      "body": [
+        "${UUID}:",
+        "  enabled: ${2:false}",
+        "  name: ${3:Human readable flag name}",
+        "  description: ${4:Human readable flag description}",
+        "  expiresOn: '${5:2024-12-31}'",
+        "  deployments:",
+        "    ${6:myDeployment}:",
+        "      firstMatch:",
+        "      - enabled: ${7:true}"
+      ],
+      "description": "Insert a feature flag configuration"
+    }
+  }

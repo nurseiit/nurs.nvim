@@ -34,7 +34,6 @@ function M.config()
       sources = {
         { source = "filesystem", display_name = icons.ui.Folder .. "File" },
         { source = "buffers", display_name = icons.ui.List .. "Bufs" },
-        { source = "git_status", display_name = icons.git.Branch .. "Git" },
       },
     },
     default_component_configs = {

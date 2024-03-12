@@ -42,7 +42,8 @@ local M = {
 function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
-  require("luasnip/loaders/from_vscode").lazy_load()
+  require("luasnip.loaders.from_vscode").lazy_load()
+  require("luasnip.loaders.from_vscode").lazy_load { paths = { "~/.config/nvim/lua/user/snippets" } }
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
@@ -120,7 +121,7 @@ function M.config()
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
-          nvim_lsp = "",
+          nvim_lsp = "[lsp]",
           nvim_lua = "",
           luasnip = "",
           buffer = "",
@@ -129,7 +130,7 @@ function M.config()
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
+          vim_item.kind = ""
           vim_item.kind_hl_group = "CmpItemKindEmoji"
         end
 
@@ -159,6 +160,19 @@ function M.config()
       },
       documentation = {
         border = "rounded",
+      },
+    },
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        cmp.config.compare.scopes, -- prefer local variables
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
       },
     },
     experimental = {
