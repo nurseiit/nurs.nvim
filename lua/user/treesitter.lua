@@ -17,6 +17,7 @@ function M.config()
         "lua",
         "python",
         "rust",
+        "toml",
         "tsx",
         "javascript",
         "jsdoc",
