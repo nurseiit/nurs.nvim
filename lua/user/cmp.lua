@@ -43,7 +43,6 @@ function M.config()
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-  vim.api.nvim_set_hl(0, "CmpItemKindCody", { fg = "Red" })
 
   local check_backspace = function()
     local col = vim.fn.col "." - 1
@@ -103,14 +102,6 @@ function M.config()
         "i",
         "s",
       }),
-      -- manual trigger cody
-      ["<C-a>"] = cmp.mapping.complete {
-        config = {
-          sources = {
-            { name = "cody" },
-          },
-        },
-      },
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -119,9 +110,9 @@ function M.config()
         vim_item.menu = ({
           nvim_lsp = "[lsp]",
           nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
+          luasnip = "[snip]",
+          buffer = "[buf]",
+          path = "[path]",
           emoji = "",
         })[entry.source.name]
 
@@ -136,7 +127,6 @@ function M.config()
     },
     sources = {
       { name = "copilot" },
-      { name = "cody" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "nvim_lua" },
