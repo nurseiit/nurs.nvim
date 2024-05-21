@@ -13,6 +13,7 @@ function M.config()
     "tsserver",
     "bashls",
     "jsonls",
+    "emmet_ls",
   }
 
   require("mason").setup {
