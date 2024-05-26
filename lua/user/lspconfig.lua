@@ -72,12 +72,13 @@ function M.config()
     "html",
     "eslint",
     "tsserver",
-    "pyright",
     "bashls",
     "jsonls",
     "yamlls",
     "stylelint_lsp",
     "emmet_ls",
+    "pyright",
+    "ruff_lsp",
   }
 
   local default_diagnostic_config = {

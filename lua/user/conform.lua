@@ -20,6 +20,7 @@ function M.config()
       toml = { "taplo" },
       css = { { "prettier", "prettierd" } },
       scss = { { "prettier", "prettierd" } },
+      python = { "ruff_format" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
