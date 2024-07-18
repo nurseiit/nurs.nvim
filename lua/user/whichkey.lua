@@ -3,26 +3,27 @@ local M = {
 }
 
 function M.config()
-  local whichkey = require "which-key"
+  local wk = require "which-key"
 
-  local normal_mappings = {
-    c = { name = "[C]ode", _ = "which_key_ignore" },
-    d = { name = "[D]ocument", _ = "which_key_ignore" },
-    g = { name = "[G]it", _ = "which_key_ignore" },
-    h = { name = "Git [H]unk", _ = "which_key_ignore" },
-    f = { name = "[F]ind / Search", _ = "which_key_ignore" },
-    k = { name = "Wor[k]space", _ = "which_key_ignore" },
+  wk.add {
+    {
+      mode = "n",
+      { "<leader>c", name = "[C]ode" },
+      { "<leader>d", name = "[D]ocument" },
+      { "<leader>g", name = "[G]it" },
+      { "<leader>h", name = "Git [H]unk" },
+      { "<leader>f", name = "[F]ind / Search" },
+      { "<leader>k", name = "Wor[k]space" },
+      { "<leader>l", desc = "[L]SP" },
+    },
   }
 
-  whichkey.register(normal_mappings, {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-  })
-
-  whichkey.register({
-    ["<leader>"] = { name = "VISUAL <leader>" },
-    ["<leader>h"] = { "Git [H]unk" },
-  }, { mode = "v" })
+  wk.add {
+    mode = "v",
+    { "<leader>", group = "VISUAL <leader>" },
+    { "<leader>h", desc = "Git [H]unk" },
+    { "<leader>l", desc = "LSP" },
+  }
 end
 
 return M

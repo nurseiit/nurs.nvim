@@ -49,6 +49,18 @@ function M.config()
       },
     }
   end, 0)
+
+  vim.filetype.add {
+    extension = {
+      env = "bash",
+    },
+    filename = {
+      [".env"] = "bash",
+    },
+    pattern = {
+      ["%.env%.[%w_.-]+"] = "bash",
+    },
+  }
 end
 
 return M

@@ -6,14 +6,14 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>gy"] = { "<cmd>GitLink!<cr>", "Git link" },
-    ["<leader>gY"] = { "<cmd>GitLink! blame<cr>", "Git link blame" },
+  wk.add {
+    { "<leader>gY", "<cmd>GitLink! blame<cr>", desc = "Git link blame" },
+    { "<leader>gy", "<cmd>GitLink!<cr>", desc = "Git link" },
   }
 
   require("gitlinker").setup {
-    message = false,
-    console_log = false,
+    -- message = false,
+    -- console_log = false,
     router = {
       browse = {
         ["^github.palantir.build"] = require("gitlinker.routers").github_browse,

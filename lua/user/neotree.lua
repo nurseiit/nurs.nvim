@@ -8,9 +8,10 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>e"] = { "<cmd>Neotree toggle<CR>", "Toggle Explorer" },
-    ["<leader>o"] = {
+  wk.add {
+    { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Toggle Explorer" },
+    {
+      "<leader>o",
       function()
         if vim.bo.filetype == "neo-tree" then
           vim.cmd.wincmd "p"
@@ -18,7 +19,7 @@ function M.config()
           vim.cmd.Neotree "focus"
         end
       end,
-      "Toggle Explorer Focus",
+      desc = "Toggle Explorer Focus",
     },
   }
 

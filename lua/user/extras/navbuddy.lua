@@ -8,12 +8,12 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>b"] = { "<cmd>Navbuddy<cr>", "Nav" },
+  wk.add {
+    { "<leader>b", "<cmd>Navbuddy<cr>", desc = "Nav buddy" },
   }
 
   local navbuddy = require "nvim-navbuddy"
-  -- local actions = require("nvim-navbuddy.actions")
+
   navbuddy.setup {
     window = {
       border = "rounded",
