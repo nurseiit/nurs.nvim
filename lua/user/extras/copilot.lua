@@ -22,7 +22,7 @@ function M.config()
       },
     },
     suggestion = {
-      enabled = true,
+      enabled = false,
       auto_trigger = true,
       debounce = 150,
       keymap = {

@@ -4,7 +4,15 @@ local M = {
 }
 
 function M.config()
-  require "nvim-web-devicons"
+  require("nvim-web-devicons").setup {
+    override = {
+      astro = {
+        icon = "",
+        color = "#ff5f56",
+        name = "astro",
+      },
+    },
+  }
 end
 
 return M

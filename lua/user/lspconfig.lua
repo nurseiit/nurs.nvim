@@ -83,6 +83,7 @@ function M.config()
     "emmet_ls",
     "pyright",
     "ruff_lsp",
+    "astro",
   }
 
   local default_diagnostic_config = {
