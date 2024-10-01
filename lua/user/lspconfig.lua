@@ -75,7 +75,7 @@ function M.config()
     "cssls",
     "html",
     "eslint",
-    "tsserver",
+    "ts_ls",
     "bashls",
     "jsonls",
     "yamlls",
@@ -112,7 +112,7 @@ function M.config()
 
   vim.diagnostic.config(default_diagnostic_config)
 
-  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
+  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config() or {}, "signs", "values") or {}) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
