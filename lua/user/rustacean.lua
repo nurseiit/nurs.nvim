@@ -23,15 +23,15 @@ vim.g.rustaceanvim = {
         cargo = {
           features = "all",
         },
-        rustfmt = {
-          overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
-        },
+        -- rustfmt = {
+        --   overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+        -- },
         procMacro = {
           ignored = {
             leptos_macro = {
               -- optional: --
               -- "component",
-              "server",
+              -- "server",
             },
           },
         },
