@@ -82,7 +82,7 @@ function M.config()
     "stylelint_lsp",
     "emmet_ls",
     "pyright",
-    "ruff_lsp",
+    "ruff",
     "astro",
   }
 
