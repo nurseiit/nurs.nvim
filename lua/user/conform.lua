@@ -21,6 +21,8 @@ function M.config()
       css = { "biome", "prettier", stop_after_first = true },
       scss = { "biome", "prettier", stop_after_first = true },
       python = { "ruff_format" },
+      sh = { "shfmt" },
+      sql = { "sqlfmt" },
     },
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable

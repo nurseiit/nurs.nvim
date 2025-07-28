@@ -10,10 +10,9 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "ts_ls",
     "bashls",
     "jsonls",
-    "emmet_ls",
+    -- "emmet_ls",
   }
 
   require("mason").setup {

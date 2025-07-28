@@ -2,15 +2,63 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "folke/neodev.nvim",
+    "folke/lazydev.nvim",
   },
 }
+
+-- Helper: ensure a result is a list of Location or LocationLink
+local function as_locations(res)
+  if not res then
+    return {}
+  elseif vim.islist(res) then
+    return res
+  else
+    return { res }
+  end
+end
+
+-- Your custom “go to definition”:
+function M.go_to_definition_prefer_cssmodules()
+  local params = vim.lsp.util.make_position_params(0, "utf-8")
+  vim.lsp.buf_request_all(0, "textDocument/definition", params, function(responses)
+    local css_locs = {}
+    local fallback_locs = {}
+
+    for client_id, resp in pairs(responses) do
+      if resp.result then
+        local client = vim.lsp.get_client_by_id(client_id)
+        local locs = as_locations(resp.result)
+
+        if client ~= nil and client.name == "cssmodules_ls" then
+          vim.list_extend(css_locs, locs)
+        else
+          vim.list_extend(fallback_locs, locs)
+        end
+      end
+    end
+
+    local to_jump = (#css_locs > 0) and css_locs or fallback_locs
+    if vim.tbl_isempty(to_jump) then
+      vim.notify("No definition found", vim.log.levels.INFO)
+      return
+    end
+
+    if #to_jump == 1 then
+      -- single result
+      vim.lsp.util.show_document(to_jump[1], "utf-8", { focus = true })
+    else
+      -- multiple: opens quickfix list
+      vim.lsp.util.show_document(to_jump[1], "utf-8", { focus = true })
+    end
+  end)
+end
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  keymap(bufnr, "n", "gd", "<cmd>lua require('user.lspconfig').go_to_definition_prefer_cssmodules()<CR>", opts)
   keymap(bufnr, "n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -21,7 +69,7 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  if client.supports_method "textDocument/inlayHint" then
+  if client:supports_method "textDocument/inlayHint" then
     vim.lsp.inlay_hint.enable(true, { bufnr })
   end
 end
@@ -67,23 +115,25 @@ function M.config()
     },
   }
 
-  local lspconfig = require "lspconfig"
   local icons = require "user.icons"
 
   local servers = {
     "lua_ls",
     "cssls",
+    "cssmodules_ls",
+    "css_variables",
+    "typescript-tools",
     "html",
     "eslint",
-    "ts_ls",
     "bashls",
     "jsonls",
     "yamlls",
     "stylelint_lsp",
-    "emmet_ls",
+    -- "emmet_ls",
     "pyright",
     "ruff",
     "astro",
+    -- "postgres_lsp",
   }
 
   local default_diagnostic_config = {
@@ -116,10 +166,6 @@ function M.config()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-  require("lspconfig.ui.windows").default_options.border = "rounded"
-
   for _, server in pairs(servers) do
     local opts = {
       on_attach = M.on_attach,
@@ -132,10 +178,16 @@ function M.config()
     end
 
     if server == "lua_ls" then
-      require("neodev").setup {}
+      ---@diagnostic disable-next-line: missing-fields
+      require("lazydev").setup {}
     end
 
-    lspconfig[server].setup(opts)
+    if server == "typescript-tools" then
+      require("typescript-tools").setup {}
+    end
+
+    vim.lsp.enable(server)
+    vim.lsp.config(server, opts)
   end
 end
 
