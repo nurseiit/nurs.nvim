@@ -5,6 +5,7 @@ local M = {
 }
 
 function M.config()
+  require("tokyonight").setup()
   vim.cmd [[colorscheme tokyonight-moon]]
 end
 

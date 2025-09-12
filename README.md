@@ -10,6 +10,11 @@ Requirements:
 
 - Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
   - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) is required for multiple [telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) pickers.
+  - [fd-find](https://github.com/sharkdp/fd#installation) is also required
+
+- Run `:checkhealth` to diagnose any issues with your installation or any neovim compatibility issues
+
+- You may need a clipboard provider depending on your distro: I use `xsel` on Ubuntu
 
 Neovim's configurations are located under the following paths, depending on your OS:
 

@@ -33,7 +33,7 @@ function M.config()
       return {
         -- These options will be passed to conform.format()
         timeout_ms = 500,
-        lsp_fallback = false,
+        lsp_format = "never",
       }
     end,
     formatters = {

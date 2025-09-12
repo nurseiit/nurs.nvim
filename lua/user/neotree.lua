@@ -1,6 +1,7 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
+  lazy = false,
   init = function()
     vim.g.neo_tree_remove_legacy_commands = true
   end,
