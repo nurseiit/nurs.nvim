@@ -129,11 +129,11 @@ function M.config()
     "jsonls",
     "yamlls",
     "stylelint_lsp",
-    -- "emmet_ls",
     "pyright",
     "ruff",
-    "astro",
+    -- "astro",
     -- "postgres_lsp",
+    "rust_analyzer",
   }
 
   local default_diagnostic_config = {
