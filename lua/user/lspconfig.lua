@@ -134,6 +134,7 @@ function M.config()
     -- "astro",
     -- "postgres_lsp",
     "rust_analyzer",
+    "oxlint",
   }
 
   local default_diagnostic_config = {
