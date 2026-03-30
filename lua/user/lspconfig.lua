@@ -75,7 +75,7 @@ M.on_attach = function(client, bufnr)
 end
 
 function M.common_capabilities()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = false
   return capabilities
 end
