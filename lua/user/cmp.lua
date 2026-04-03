@@ -2,17 +2,8 @@ local M = {
   "saghen/blink.cmp",
   version = "1.*",
   event = "InsertEnter",
-  dependencies = {
-    {
-      "L3MON4D3/LuaSnip",
-      version = "v2.*",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load { paths = { "~/.config/nvim/lua/user/snippets" } }
-      end,
-    },
-  },
   opts = {
-    snippets = { preset = "luasnip" },
+    snippets = { preset = "default" },
     fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = { enabled = true },
     keymap = {
@@ -46,6 +37,13 @@ local M = {
     },
     sources = {
       default = { "lsp", "snippets", "path", "buffer" },
+      providers = {
+        snippets = {
+          opts = {
+            search_paths = { vim.fn.stdpath("config") .. "/lua/user/snippets" },
+          },
+        },
+      },
     },
   },
   opts_extend = { "sources.default" },
