@@ -54,16 +54,13 @@ function M.go_to_definition_prefer_cssmodules()
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua require('user.lspconfig').go_to_definition_prefer_cssmodules()<CR>", opts)
-  keymap(bufnr, "n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", M.go_to_definition_prefer_cssmodules, opts)
+  vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 end
 
 M.on_attach = function(client, bufnr)
@@ -96,10 +93,10 @@ function M.config()
       "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
       desc = "Format",
     },
-    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
+    { "<leader>li", "<cmd>checkhealth vim.lsp<cr>", desc = "Info" },
+    { "<leader>lj", "<cmd>lua vim.diagnostic.jump({count=1})<cr>", desc = "Next Diagnostic" },
     { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
-    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+    { "<leader>lk", "<cmd>lua vim.diagnostic.jump({count=-1})<cr>", desc = "Prev Diagnostic" },
     { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
     { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
     { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
@@ -154,7 +151,7 @@ function M.config()
       focusable = true,
       style = "minimal",
       border = "rounded",
-      source = "always",
+      source = true,
       header = "",
       prefix = "",
     },
