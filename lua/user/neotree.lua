@@ -2,9 +2,6 @@ local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
   lazy = false,
-  init = function()
-    vim.g.neo_tree_remove_legacy_commands = true
-  end,
 }
 
 function M.config()
@@ -135,7 +132,7 @@ function M.config()
     window = {
       width = 30,
       mappings = {
-        ["<space>"] = false, -- disable space until we figure out which-key disabling
+        ["<space>"] = false,
         ["[b"] = "prev_source",
         ["]b"] = "next_source",
         F = "find_in_dir",

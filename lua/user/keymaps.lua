@@ -21,8 +21,6 @@ vim.keymap.set("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
 vim.keymap.set("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
 vim.keymap.set("n", "<C-q>", "<cmd>qa!<cr>", { desc = "Force quit" })
 
-vim.o.showtabline = 2
-
 -- Comments (built-in gc/gcc since 0.10+)
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment line" })
 vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle comment for selection" })

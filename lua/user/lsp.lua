@@ -18,7 +18,7 @@ function M.go_to_definition_prefer_cssmodules()
 
     for client_id, resp in pairs(responses) do
       if resp.result then
-        local client = vim.lsp.get_client_by_id(client_id)
+        local client = vim.lsp.get_clients({ id = client_id })[1]
         local locs = as_locations(resp.result)
 
         if client ~= nil and client.name == "cssmodules_ls" then
@@ -44,8 +44,10 @@ function M.go_to_definition_prefer_cssmodules()
 end
 
 local css_module_filetypes = {
-  javascript = true, javascriptreact = true,
-  typescript = true, typescriptreact = true,
+  javascript = true,
+  javascriptreact = true,
+  typescript = true,
+  typescriptreact = true,
 }
 
 local function lsp_keymaps(bufnr)

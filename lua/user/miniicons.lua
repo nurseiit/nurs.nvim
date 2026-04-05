@@ -1,10 +1,12 @@
 local M = {
-  "echasnovski/mini.icons",
-  event = "VeryLazy",
+  "nvim-mini/mini.icons",
+  lazy = false,
 }
 
 function M.config()
-  require("mini.icons").setup()
+  local icons = require "mini.icons"
+  icons.setup()
+  icons.mock_nvim_web_devicons()
 end
 
 return M
