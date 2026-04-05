@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+  local lsp = require "user.lsp"
   local wk = require "which-key"
   local icons = require "user.icons"
 
@@ -53,7 +54,10 @@ function M.setup()
     },
   }
 
-  require("lazydev").setup {}
+  vim.lsp.config("*", {
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities(),
+  })
 
   vim.lsp.enable {
     "lua_ls",

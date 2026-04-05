@@ -8,7 +8,6 @@ return {
     lsp.on_attach(client, bufnr)
     client.server_capabilities.hoverProvider = false
   end,
-  capabilities = lsp.capabilities(),
   init_options = {
     settings = {
       organizeImports = true,

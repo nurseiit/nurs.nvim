@@ -36,5 +36,3 @@ spec "user.extras.gitlinker"
 -- spec "user.extras.copilot"
 -- spec "user.extras.supermaven"
 require "user.lazy"
-
-require("user.lspconfig").setup()

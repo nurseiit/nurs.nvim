@@ -17,6 +17,8 @@ function M.config()
       "json-lsp",
       "pyright",
       "ruff",
+      "eslint-lsp",
+      "oxlint",
     },
   }
 end
