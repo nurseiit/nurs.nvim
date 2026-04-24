@@ -70,6 +70,7 @@ function M.setup()
     "lua_ls",
     "oxlint",
     "pyright",
+    "ocamllsp",
     "ruff",
     "rust_analyzer",
     "stylelint_lsp",
