@@ -60,20 +60,20 @@ function M.setup()
   })
 
   vim.lsp.enable {
-    "lua_ls",
+    "bashls",
+    "css_variables",
     "cssls",
     "cssmodules_ls",
-    "css_variables",
-    "html",
     "eslint",
-    "bashls",
+    "html",
     "jsonls",
-    "yamlls",
-    "stylelint_lsp",
+    "lua_ls",
+    "oxlint",
     "pyright",
     "ruff",
     "rust_analyzer",
-    "oxlint",
+    "stylelint_lsp",
+    "yamlls",
   }
 end
 
