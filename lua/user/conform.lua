@@ -23,6 +23,7 @@ function M.config()
       python = { "ruff_format" },
       sh = { "shfmt" },
       sql = { "sqlfmt" },
+      reason = { "refmt" },
     },
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
@@ -40,6 +41,9 @@ function M.config()
       leptosfmt = {
         command = "leptosfmt",
         args = { "--stdin" },
+      },
+      refmt = {
+        command = "refmt",
       },
     },
   }
