@@ -40,7 +40,7 @@ local M = {
       providers = {
         snippets = {
           opts = {
-            search_paths = { vim.fn.stdpath("config") .. "/lua/user/snippets" },
+            search_paths = { vim.fn.stdpath "config" .. "/lua/user/snippets" },
           },
         },
       },

@@ -17,7 +17,6 @@ vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "Open floa
 -- Custom save keymaps
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 vim.keymap.set("n", "<leader>q", "<cmd>confirm q<cr>", { desc = "Quit" })
-vim.keymap.set("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
 vim.keymap.set("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
 vim.keymap.set("n", "<C-q>", "<cmd>qa!<cr>", { desc = "Force quit" })
 
