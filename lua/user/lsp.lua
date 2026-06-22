@@ -75,9 +75,7 @@ function M.on_attach(client, bufnr)
 end
 
 function M.capabilities()
-  local capabilities = require("blink.cmp").get_lsp_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = false
-  return capabilities
+  return require("blink.cmp").get_lsp_capabilities()
 end
 
 function M.toggle_inlay_hints()

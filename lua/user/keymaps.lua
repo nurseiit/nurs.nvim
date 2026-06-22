@@ -25,12 +25,10 @@ vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment l
 vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle comment for selection" })
 
 -- Tabs
-vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true, desc = "New tab" })
-vim.api.nvim_set_keymap("n", "<leader>tq", ":tabclose<CR>", { noremap = true, desc = "Quit tab" })
-vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true, desc = "Close all except this" })
-vim.api.nvim_set_keymap("n", "]t", ":tabn<CR>", { noremap = true, desc = "Next tab" })
-vim.api.nvim_set_keymap("n", "[t", ":tabp<CR>", { noremap = true, desc = "Prev tab" })
--- move current tab to previous position
-vim.api.nvim_set_keymap("n", "<t", ":-tabmove<CR>", { noremap = true, desc = "Move tab to prev" })
--- move current tab to next position
-vim.api.nvim_set_keymap("n", ">t", ":+tabmove<CR>", { noremap = true, desc = "Move tab to next" })
+vim.keymap.set("n", "<leader>ta", "<cmd>$tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Quit tab" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close all except this" })
+vim.keymap.set("n", "]t", "<cmd>tabn<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "[t", "<cmd>tabp<cr>", { desc = "Prev tab" })
+vim.keymap.set("n", "<t", "<cmd>-tabmove<cr>", { desc = "Move tab to prev" })
+vim.keymap.set("n", ">t", "<cmd>+tabmove<cr>", { desc = "Move tab to next" })

@@ -3,6 +3,9 @@ local M = {
   version = "1.*",
   event = "InsertEnter",
   opts = {
+    enabled = function()
+      return vim.api.nvim_win_get_config(0).relative == ""
+    end,
     snippets = { preset = "default" },
     fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = { enabled = true },

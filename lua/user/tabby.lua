@@ -18,14 +18,9 @@ local tab_name = function(tab)
   local current_bufnr = vim.fn.getwininfo(cur_win)[1].bufnr
   local current_bufinfo = vim.fn.getbufinfo(current_bufnr)[1]
   local current_buf_name = vim.fn.fnamemodify(current_bufinfo.name, ":t")
-  -- local no_extension = vim.fn.fnamemodify(current_bufinfo.name, ":p:r")
 
-  if string.find(current_buf_name, "NvimTree") ~= nil then
+  if vim.bo[current_bufnr].filetype == "neo-tree" then
     return "[File Explorer]"
-  end
-
-  if current_buf_name == "NeogitStatus" then
-    return "[Neogit]"
   end
 
   if open_tabs[current_bufinfo.name] == nil then
@@ -51,20 +46,6 @@ local tab_count = function()
     local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
     return tabpage_number .. "/" .. tostring(num_tabs)
   end
-end
-
-local change_mark = function(tab)
-  local already_marked = false
-  return tab.wins().foreach(function(win)
-    local bufnr = vim.fn.getwininfo(win.id)[1].bufnr
-    local bufinfo = vim.fn.getbufinfo(bufnr)[1]
-    if not already_marked and bufinfo.changed == 1 then
-      already_marked = true
-      return " "
-    else
-      return ""
-    end
-  end)
 end
 
 local window_count = function(tab)
@@ -94,14 +75,10 @@ function M.config()
       line.tabs().foreach(function(tab)
         local hl = tab.is_current() and theme.current_tab or theme.tab
         return {
-          -- line.sep("", hl, theme.fill),
           line.sep("", hl, theme.fill),
           tab.is_current() and "" or "",
           tab_name(tab),
-          -- tab.close_btn("󰅖 "),
           window_count(tab),
-          -- change_mark(tab),
-          -- line.sep(" ", hl, theme.fill),
           line.sep(" ", hl, theme.fill),
           hl = hl,
           margin = " ",

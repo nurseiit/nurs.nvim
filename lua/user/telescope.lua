@@ -96,6 +96,14 @@ function M.config()
         "--smart-case",
         "--hidden",
         "--glob=!.git/",
+        "--glob=!node_modules/",
+        "--glob=!.next/",
+        "--glob=!.cache/",
+        "--glob=!.turbo/",
+        "--glob=dist/",
+        "--glob=build/",
+        "--glob=target/",
+        "--glob=.venv/",
       },
 
       mappings = {
