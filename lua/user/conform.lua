@@ -21,6 +21,7 @@ function M.config()
       css = { "biome-check", "prettier", stop_after_first = true },
       scss = { "biome-check", "prettier", stop_after_first = true },
       python = { "ruff_format" },
+      scheme = { "schemat" },
       sh = { "shfmt" },
       sql = { "sqlfmt" },
       reason = { "refmt" },
@@ -44,6 +45,9 @@ function M.config()
       },
       refmt = {
         command = "refmt",
+      },
+      schemat = {
+        command = "schemat",
       },
     },
   }
